@@ -6,4 +6,9 @@ def read_file():
             print (movie)
             print (mainGuy)
 
+def write_file(movie, mainGuy):
+    with open('VS Code/Public/movieData.txt', 'a') as data: 
+        data.write('\n' + movie + '/' + mainGuy)
+
 read_file()
+write_file()
