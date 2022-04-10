@@ -1,3 +1,6 @@
+from tkinter import simpledialog, messagebox, Tk, font
+import tkinter
+
 ## NOTE! Replace VS Code/Public/movieData.txt with the aboslute path of the location of this file on your computer.
 
 def write_file(movie, mainGuy, length):
@@ -10,46 +13,38 @@ def write_file(movie, mainGuy, length):
 
 def character_search():
     '''Creates a function to search for movie info and interact with the user'''
-    print ("What movie would you like to find out more about? (You can type e to quit)")
-    movieInput = input()
+    movieInput = simpledialog.askstring ('Movie Expert',"What movie would you like to find out more about? (You can type e to quit)")
     with open ('VS Code/Public/movieData.txt', 'r')as movieData:            # opens movieData
         for data in movieData:
             newdata = data.rstrip('\n')
             movie, mainGuy, length = newdata.split('/')                     # assigns variables for each of the nuggets of info
             if movieInput.lower() == movie:
-                print ("The main actor is " + mainGuy.title())              # returns info for user
-                print ("The length of the movie is: " + str(length))
+                messagebox.showinfo(movieInput.title(), "The main actor is: \n" + mainGuy.title() + "\nThe length of the movie is: \n" + str(length))              # returns info for user
                 return
             elif movieInput.lower() == 'e':                                 # allows for an exit command
-                print ("Ok then, Good Bye!")
+                messagebox.showinfo('Farewell!',"Ok then, Good Bye!")
                 exit()
         if movieInput != movie:                                             # allows to file new information
-            print ("ERROR! Movie not filed.")
-            print ("Would you like to add this movie's details? (yes/no)")
-            answer = input()
-            if answer.lower() == 'yes':
-                print ("OH GOODY GOODY!")
-                print ("Who is the main actor in the movie?")
-                mainActor = input()
-                print ("Great, now what is the length of the movie? (Please put convert to minutes... e.g (120 minutes)")
-                movieLength = input() 
+            answer = messagebox.askyesnocancel('ERROR! Movie not filed.',"Would you like to add this movie's details?")
+            if answer is True:
+                mainActor = simpledialog.askstring('Main Actor', "OH GOODY GOODY! \nWho is the main actor in the movie?")
+                movieLength = simpledialog.askstring('Length',"Great, now what is the length of the movie? \n(Please put convert to minutes... e.g (120 minutes)")
                 write_file (movieInput, mainActor, movieLength)             # writes to file
                 return
-            elif answer.lower == 'no':
-                print ("I am sad. Have a great day!")
+            elif answer is False:
+                messagebox.showinfo(' ', "I am sad. Have a great day!")
                 exit()
 
                 
+root = Tk()
+root.withdraw()
 
 def startUp_interface():
     '''Creates a funtion for the start-up interface'''
-    print ("Would you like to find out more about movies?")
-    userInput = input()
-    while userInput.lower() != 'no':
-        if userInput.lower() == 'yes':
+    userInput = messagebox.askyesnocancel('Movie Expert',"Would you like to find out more about movies?")
+    while userInput is not False:
+        if userInput is True:
             character_search()
-        else:
-            print ("I'm sorry that wasn't a yes or a no.")
-            userInput = input()
-    print ("Ok, your loss. Have a great day!")
+    messagebox.showinfo('Answer', "Ok, your loss. Have a great day!")
+
 startUp_interface()
