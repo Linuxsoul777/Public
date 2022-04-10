@@ -1,5 +1,4 @@
-from tkinter import simpledialog, messagebox, Tk, font
-import tkinter
+from tkinter import simpledialog, messagebox, Tk
 
 ## NOTE! Replace VS Code/Public/movieData.txt with the aboslute path of the location of this file on your computer.
 
@@ -9,7 +8,6 @@ def write_file(movie, mainGuy, length):
         movie = movie.lower()
         mainGuy = mainGuy.lower()
         data.write('\n' + movie + '/' + mainGuy + '/' + length)    # writes to file
-
 
 def character_search():
     '''Creates a function to search for movie info and interact with the user'''
@@ -34,8 +32,7 @@ def character_search():
             elif answer is False:
                 messagebox.showinfo(' ', "I am sad. Have a great day!")
                 exit()
-
-                
+           
 root = Tk()
 root.withdraw()
 
