@@ -4,7 +4,7 @@ from tkinter import simpledialog, messagebox, Tk
 
 def write_file(movie, mainGuy, length):
     '''creates variable to write to file movieData'''
-    with open('VS Code/Public/movieData.txt', 'a') as data: 
+    with open('/mnt/HD 1/VS Code/Public/movieData.txt', 'a') as data: 
         movie = movie.lower()
         mainGuy = mainGuy.lower()
         data.write('\n' + movie + '/' + mainGuy + '/' + length)    # writes to file
@@ -12,7 +12,7 @@ def write_file(movie, mainGuy, length):
 def character_search():
     '''Creates a function to search for movie info and interact with the user'''
     movieInput = simpledialog.askstring ('Movie Expert',"What movie would you like to find out more about? (You can type e to quit)")
-    with open ('VS Code/Public/movieData.txt', 'r')as movieData:            # opens movieData
+    with open ('/mnt/HD 1/VS Code/Public/movieData.txt', 'r')as movieData:            # opens movieData
         for data in movieData:
             newdata = data.rstrip('\n')
             movie, mainGuy, length = newdata.split('/')                     # assigns variables for each of the nuggets of info
