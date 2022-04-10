@@ -1,3 +1,5 @@
+## NOTE! Replace VS Code/Public/movieData.txt with the aboslute path of the location of this file on your computer.
+
 def write_file(movie, mainGuy, length):
     with open('VS Code/Public/movieData.txt', 'a') as data: 
         movie = movie.lower()
