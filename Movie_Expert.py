@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from tkinter import simpledialog, messagebox, Tk
 
 ## NOTE! Replace VS Code/Public/movieData.txt with the aboslute path of the location of this file on your computer.
